@@ -1,8 +1,19 @@
 version: 0.0
 os: linux
-files: 
-  - source: /home/ec2-user/Maven-Web-Project/target/maven-web-project-1.1-SNAPSHOT.war
-  - destination: /home/ec2-user/apache-tomcat-8.5.40/webapps
+build:
+        commands:
+          - echo Entering build phase...
+          - echo Build started on `date`
+          - mvn clean package
+            timeout: 300
+#files: 
+#  - source: /home/ec2-user/Maven-Web-Project/target/maven-web-project-1.1-SNAPSHOT.war
+#  - destination: /home/ec2-user/apache-tomcat-8.5.40/webapps
+post_build:
+        commands:
+          - echo Entering post_build phase...
+          - echo Build completed on `date`
+          - mv /home/ec2-user/Maven-Web-Project/target/maven-web-project-1.1-SNAPSHOT.war /home/ec2-user/apache-tomcat-8.5.40/webapps
 
 
 
