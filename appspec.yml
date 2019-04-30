@@ -1,16 +1,8 @@
-version: 0.2
-
-phases:
-  post_build:
-    commands:
-      - mvn package
-      - mv target/maven-web-project-1.1-SNAPSHOT.war  maven-web-project-1.1-SNAPSHOT.war
-artifacts:
-  files:
-    - source: /target/maven-web-project-1.1-SNAPSHOT.war
-      destination: /home/ec2-user/apache-tomcat-8.5.40/webapps
-    - maven-web-project-1.1-SNAPSHOT.war
-    - .ebextensions/**/*
+version: 0.0
+os: linux
+files: 
+  - source: /home/ec2-user/Maven-Web-Project/target/maven-web-project-1.1-SNAPSHOT.war
+  - destination: /home/ec2-user/apache-tomcat-8.5.40/webapps
 
 
 
